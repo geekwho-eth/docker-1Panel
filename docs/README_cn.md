@@ -13,13 +13,13 @@
 <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
   <a href="https://hub.docker.com/r/caijiamx/1panel"><img src="https://img.shields.io/docker/pulls/caijiamx/1panel.svg" alt="Docker Pulls"></a>
   <a href="https://hub.docker.com/r/caijiamx/1panel"><img src="https://img.shields.io/docker/stars/caijiamx/1panel.svg" alt="Docker Stars"></a>
-  <a href="https://hub.docker.com/r/caijiamx/1panel"><img src="https://img.shields.io/docker/image-size/caijiamx/1panel/dood-2.0.16-alpine-cn.svg" alt="Docker Image Size"></a>
+  <a href="https://hub.docker.com/r/caijiamx/1panel"><img src="https://img.shields.io/docker/image-size/caijiamx/1panel/dood-2.0.17-alpine-cn.svg" alt="Docker Image Size"></a>
 </div>
 
 本仓库用于构建并发布 1Panel 的 Docker 镜像，采用 DooD（Docker-out-of-Docker）设计，复用宿主机 Docker 引擎，使用 supervisord 管理 1Panel 进程，避免在容器内运行 systemd 或使用 --privileged。
 
-- 当前镜像最新版本：2.0.16
-- 支持多版本：2.0.0 ~ 2.0.16（通过变量替换注入）
+- 当前镜像最新版本：2.0.17
+- 支持多版本：2.0.0 ~ 2.0.17（通过变量替换注入）
 - 支持多系统：ubuntu、centos、alpine
 - 支持多架构：amd64、arm64（buildx + QEMU）
 - 镜像命名：caijiamx/1panel:dood-{version}-{os}-cn

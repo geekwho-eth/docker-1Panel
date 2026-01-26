@@ -1,8 +1,8 @@
 SHELL := /bin/bash
 
-# Defaults (override via: make build OS=ubuntu VERSION=2.0.16)
+# Defaults (override via: make build OS=ubuntu VERSION=2.0.17)
 OS ?= ubuntu
-VERSION ?= 2.0.16
+VERSION ?= 2.0.17
 PLATFORMS ?= linux/amd64,linux/arm64
 IMAGE_REPO ?= caijiamx/1panel
 IMAGE_TAG_PREFIX ?= dood
@@ -26,14 +26,14 @@ CURRENT_PLATFORM := $(shell uname -m | sed 's/arm64/linux\/arm64/;s/x86_64/linux
 .PHONY: help builder prepare build buildx push load matrix-push clean login
 
 help: ## 列出可用命令与说明
-	@echo "用法: make <target> [OS=ubuntu|centos|alpine] [VERSION=2.0.0~2.0.16] [PLATFORMS=linux/amd64,linux/arm64] [IMAGE_REPO=...] [IMAGE_TAG_PREFIX=dood]"
+	@echo "用法: make <target> [OS=ubuntu|centos|alpine] [VERSION=2.0.0~2.0.17] [PLATFORMS=linux/amd64,linux/arm64] [IMAGE_REPO=...] [IMAGE_TAG_PREFIX=dood]"
 	@echo
 	@echo "可用目标:"
 	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z0-9_.-]+:.*##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
 	@echo
 	@echo "参数（默认值 / 当前值）:"
 	@printf "  OS                default: ubuntu                         current: %s\n" "$(OS)"
-	@printf "  VERSION           default: 2.0.16                         current: %s\n" "$(VERSION)"
+	@printf "  VERSION           default: 2.0.17                         current: %s\n" "$(VERSION)"
 	@printf "  PLATFORMS         default: linux/amd64,linux/arm64        current: %s\n" "$(PLATFORMS)"
 	@printf "  IMAGE_REPO        default: caijiamx/1panel                current: %s\n" "$(IMAGE_REPO)"
 	@printf "  IMAGE_TAG_PREFIX  default: dood                           current: %s\n" "$(IMAGE_TAG_PREFIX)"
@@ -41,9 +41,9 @@ help: ## 列出可用命令与说明
 	@echo
 	@echo "示例:"
 	@echo "  make builder"
-	@echo "  make load OS=alpine VERSION=2.0.16"
+	@echo "  make load OS=alpine VERSION=2.0.17"
 	@echo "  make push OS=centos VERSION=2.0.0"
-	@echo "  make build OS=ubuntu VERSION=2.0.16 PLATFORMS=linux/arm64 ONEPANEL_TYPE=pro"
+	@echo "  make build OS=ubuntu VERSION=2.0.17 PLATFORMS=linux/arm64 ONEPANEL_TYPE=pro"
 	@echo "  make matrix-push"
 
 builder: ## 初始化 QEMU/binfmt 与 buildx
@@ -96,7 +96,7 @@ load: prepare ## 仅当前架构构建并加载到本机
 
 # Local matrix push for OS x versions (same as CI matrix). Adjust as needed.
 matrix-push: builder ## 循环构建并推送 OS×版本 矩阵
-	@versions="2.0.0 2.0.1 2.0.2 2.0.3 2.0.4 2.0.5 2.0.6 2.0.7 2.0.8 2.0.9 2.0.10 2.0.11 2.0.12 2.0.13 2.0.14 2.0.15 2.0.16"; \
+	@versions="2.0.0 2.0.1 2.0.2 2.0.3 2.0.4 2.0.5 2.0.6 2.0.7 2.0.8 2.0.9 2.0.10 2.0.11 2.0.12 2.0.13 2.0.14 2.0.15 2.0.16 2.0.17"; \
 	for os in ubuntu centos alpine; do \
 	  for v in $$versions; do \
 	    echo "==> Building $$os $$v"; \
