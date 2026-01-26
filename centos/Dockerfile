@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/ubi
+FROM registry.access.redhat.com/ubi9/ubi:latest@sha256:3816d303e75dec4da2d10eeb9e8651eef4393721598bea4690c607282635aa57
 
 LABEL maintainer="GeekWho <geekwho_eth@outlook.com>"
 LABEL version="1.0"
