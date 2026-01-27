@@ -66,7 +66,7 @@ if [ ! -f ${package_file_name} ];then
 	exit 1
 fi
 
-tar zxvf ${package_file_name}
+tar -xvf ${package_file_name}
 if [ $? != 0 ];then
 	echo "解压安装包失败，请稍候重试。"
 	rm -f ${package_file_name}
