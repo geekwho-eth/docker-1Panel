@@ -12,12 +12,12 @@
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/caijiamx/1panel.svg)](https://hub.docker.com/r/caijiamx/1panel)
 [![Docker Stars](https://img.shields.io/docker/stars/caijiamx/1panel.svg)](https://hub.docker.com/r/caijiamx/1panel)
-[![Docker Image Size (dood-2.0.17-alpine-cn)](https://img.shields.io/docker/image-size/caijiamx/1panel/dood-2.0.17-alpine-cn.svg)](https://hub.docker.com/r/caijiamx/1panel)
+[![Docker Image Size (dood-2.1.3-alpine-cn)](https://img.shields.io/docker/image-size/caijiamx/1panel/dood-2.1.3-alpine-cn.svg)](https://hub.docker.com/r/caijiamx/1panel)
 
 This repository builds and publishes Docker images for 1Panel using the DooD (Docker-out-of-Docker) design. It reuses the host Docker engine and uses supervisord to manage 1Panel processes, avoiding running systemd in containers or using --privileged.
 
-- Current latest image version: 2.0.17
-- Multi-version support: 2.0.0 ~ 2.0.17 (injected by placeholder replacement)
+- Current latest image version: 2.1.3
+- Multi-version support: 2.0.0 ~ 2.1.3 (injected by placeholder replacement)
 - Multiple OS: ubuntu, centos, alpine
 - Multi-arch: amd64, arm64 (buildx + QEMU)
 - Image naming: caijiamx/1panel:dood-{version}-{os}
