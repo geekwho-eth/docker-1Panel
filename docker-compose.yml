@@ -1,7 +1,7 @@
 services:
   one_panel:
     container_name: one_panel
-    image: caijiamx/1panel:dood-2.1.7-ubuntu-cn
+    image: caijiamx/1panel:dood-2.1.12-ubuntu-cn
     environment:
       - TZ=Asia/Shanghai
     ports:
