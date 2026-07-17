@@ -1,628 +1,722 @@
 <!doctype html>
 <html>
 <head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; height: auto; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-width: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignObject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: medium !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: medium; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: medium; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+<style type='text/css'  id="style-mac-print"> @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}</style>
+
 <title>README_cn</title>
 </head>
-<body><h1 id='1panel-docker-镜像dood-方案'>1Panel Docker 镜像（DooD 方案）</h1>
-<div style="display: flex; justify-content: center; gap: 10px; align-items: center;">
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='1panel-docker-镜像dood-方案'><span>1Panel Docker 镜像（DooD 方案）</span></h1><div style="display: flex; justify-content: center; gap: 10px; align-items: center;">
   <a href="/README.md"><img alt="English" src="https://img.shields.io/badge/English-d9d9d9"></a>
   <a href="/docs/README_cn.md"><img alt="中文(简体)" src="https://img.shields.io/badge/中文(简体)-d9d9d9"></a>
   <a href="https://github.com/geekwho-eth/docker-1Panel/actions/workflows/main.yml">
     <img alt="GitHub Actions Status" src="https://github.com/geekwho-eth/docker-1Panel/actions/workflows/main.yml/badge.svg">
   </a>
-</div>
-<h2 id='1panel-docker-镜像统计数据'>1Panel Docker 镜像统计数据</h2>
-<div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+</div><h2 id='1panel-docker-镜像统计数据'><span>1Panel Docker 镜像统计数据</span></h2><div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
   <a href="https://hub.docker.com/r/caijiamx/1panel"><img src="https://img.shields.io/docker/pulls/caijiamx/1panel.svg" alt="Docker Pulls"></a>
   <a href="https://hub.docker.com/r/caijiamx/1panel"><img src="https://img.shields.io/docker/stars/caijiamx/1panel.svg" alt="Docker Stars"></a>
   <a href="https://hub.docker.com/r/caijiamx/1panel"><img src="https://img.shields.io/docker/image-size/caijiamx/1panel/dood-2.0.17-alpine-cn.svg" alt="Docker Image Size"></a>
-</div>
-<p>本仓库用于构建并发布 1Panel 的 Docker 镜像，采用 DooD（Docker-out-of-Docker）设计，复用宿主机 Docker 引擎，使用 supervisord 管理 1Panel 进程，避免在容器内运行 systemd 或使用 --privileged。</p>
-<ul>
-<li>当前镜像最新版本：2.1.12</li>
-<li>支持多版本：2.0.0 ~ 2.1.12（通过变量替换注入）</li>
-<li>支持多系统：ubuntu、centos、alpine</li>
-<li>支持多架构：amd64、arm64（buildx + QEMU）</li>
-<li>镜像命名：caijiamx/1panel:dood-{version}-{os}-cn</li>
-<li>构建方式：GitHub Actions 工作流 + 本地 Makefile</li>
-
-</ul>
-<p>提示：本方案适合可信、单租户环境，生产环境使用需严格控制访问并做好防护策略（建议WAF+网络防火墙）。</p>
-<h2 id='目录'>目录</h2>
-<ul>
-<li><p><a href='#使用说明'>使用说明</a></p>
-<ul>
-<li><p><a href='#特性与设计'>特性与设计</a></p>
-</li>
-<li><p><a href='#支持系统与命名规范'>支持系统与命名规范</a></p>
-</li>
-<li><p><a href='#快速开始'>快速开始</a></p>
-<ul>
-<li><a href='#docker-run'>docker run</a></li>
-<li><a href='#docker-compose'>docker-compose</a></li>
-
-</ul>
-</li>
-<li><p><a href='#镜像拉取'>镜像拉取</a></p>
-</li>
-<li><p><a href='#目录结构'>目录结构</a></p>
-</li>
-
-</ul>
-</li>
-<li><p><a href='#实现方案'>实现方案</a></p>
-<ul>
-<li><a href='#systemctl-注释说明'>systemctl 注释说明</a></li>
-<li><a href='#supervisord-说明'>supervisord 说明</a></li>
-<li><a href='#dood说明'>DooD说明</a></li>
-<li><a href='#为什么选择dood'>为什么选择DooD</a></li>
-<li><a href='#dood-vs-dind-vs-sysbox对比'>DooD vs DinD vs Sysbox对比</a></li>
-
-</ul>
-</li>
-<li><p><a href='#构建说明'>构建说明</a></p>
-<ul>
-<li><a href='#本地构建makefile'>本地构建（Makefile）</a></li>
-<li><a href='#github-actions-构建'>GitHub Actions 构建</a></li>
-
-</ul>
-</li>
-<li><p><a href='#升级说明'>升级说明</a></p>
-<ul>
-<li><a href='#版本升级步骤'>版本升级步骤</a></li>
-
-</ul>
-</li>
-<li><p><a href='#常见问题'>常见问题</a></p>
-<ul>
-<li><a href='#服务功能限制'>服务&amp;功能限制</a></li>
-<li><a href='#faq'>FAQ</a></li>
-
-</ul>
-</li>
-
-</ul>
-<h2 id='使用说明'>使用说明</h2>
-<h3 id='特性与设计'>特性与设计</h3>
-<ul>
-<li><p>DooD：容器共享宿主机 Docker 引擎与缓存，构建更快、占用更小。</p>
-</li>
-<li><p>进程管理：容器内不运行 systemd，改用 supervisord 前台托管 1panel-core 与 1panel-agent。</p>
-</li>
-<li><p>版本变量注入：Dockerfile 中包含占位符，示例（ubuntu）：</p>
-<pre><code>RUN bash /1panel/quick_start.sh v{%OnePanel_Version%}
-</code></pre>
-<p>构建时以 sed 将 {%OnePanel_Version%} 替换为具体版本（2.0.0~2.0.15）。</p>
-</li>
-<li><p>多架构：buildx + QEMU 生成 linux/amd64、linux/arm64 镜像；脚本会自动识别归档架构并下载对应包。</p>
-</li>
-
-</ul>
-<h3 id='支持系统与命名规范'>支持系统与命名规范</h3>
-<ul>
-<li><p>系统：ubuntu、centos、alpine</p>
-</li>
-<li><p>版本：2.0.0 ~ 2.0.15</p>
-</li>
-<li><p>架构：amd64、arm64（自动匹配下载包）</p>
-</li>
-<li><p>标签规范：</p>
-<ul>
-<li>caijiamx/1panel:dood-{version}-{os}-cn</li>
-<li>例：caijiamx/1panel:dood-2.0.15-ubuntu-cn</li>
-
-</ul>
-</li>
-
-</ul>
-<h3 id='快速开始'>快速开始</h3>
-<h4 id='docker-run'>docker run</h4>
-<p>容器构建自动生成用户名、密码、端口，可启动后在容器内调整。这里假设面板默认端口为 8888。运行命令示例：</p>
-<pre><code class='language-shell' lang='shell'>docker run -d --name 1panel --restart unless-stopped \
-  -p 8888:8888 \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-  -v /1panel_app/data/:/opt/ \
-  caijiamx/1panel:dood-2.0.15-ubuntu-cn
-</code></pre>
-<p>初始化（容器内）：</p>
-<p><strong>重要的事情讲三遍！！！</strong></p>
-<p><strong>首次部署务必修改用户名/密码/入口!</strong></p>
-<p><strong>首次部署务必修改用户名/密码/入口!</strong></p>
-<p><strong>首次部署务必修改用户名/密码/入口!</strong></p>
-<pre><code class='language-shell' lang='shell'>docker exec -it 1panel bash
-# 查看安全入口与当前配置
-1panel user-info
-
-# 修改端口/用户/密码
-1panel update port
-1panel update username
-1panel update password
-</code></pre>
-<h4 id='docker-compose'>docker-compose</h4>
-<p>仓库内提供示例 docker-compose.yml（DooD 必要挂载已包含）：</p>
-<pre><code class='language-yaml' lang='yaml'>services:
-  one_panel:
-    image: caijiamx/1panel:dood-2.0.15-ubuntu-cn
-    container_name: 1panel
-    restart: unless-stopped
-    ports:
-      - &quot;8888:8888&quot;
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/lib/docker/volumes:/var/lib/docker/volumes
-      - /1panel_app/data/:/opt/
-</code></pre>
-<p>docker-compose.yml关键字段：</p>
-<ul>
-<li><p>image：镜像标签如 caijiamx/1panel:dood-2.0.15-ubuntu-cn</p>
-</li>
-<li><p>ports：对外端口映射，示例 8888:8888</p>
-</li>
-<li><p>volumes（DooD 必要挂载）：</p>
-<ul>
-<li>/var/run/docker.sock:/var/run/docker.sock</li>
-<li>/var/lib/docker/volumes:/var/lib/docker/volumes</li>
-<li>/panel_app/data/:/opt/  # 建议统一此路径，便于数据持久化</li>
-
-</ul>
-</li>
-<li><p>healthcheck：简单进程检查（core/agent 是否存在）</p>
-</li>
-<li><p>extra_hosts：host-gateway 方便访问宿主机</p>
-</li>
-<li><p>networks：使用外部网络 one_panel（先创建网络）</p>
-</li>
-
-</ul>
-<p>启动服务：</p>
-<pre><code>docker network create one_panel
-docker compose up -d
-</code></pre>
-<p>提示：</p>
-<ul>
-<li>不使用 --privileged、不挂载 /sys/fs/cgroup，不在容器内运行 systemd。</li>
-<li>持久化 /opt/（默认安装到 /opt/1panel）。</li>
-
-</ul>
-<h3 id='镜像拉取'>镜像拉取</h3>
-<pre><code class='language-shell' lang='shell'># Ubuntu
-docker pull caijiamx/1panel:dood-2.0.15-ubuntu-cn
-# CentOS
-docker pull caijiamx/1panel:dood-2.0.15-centos-cn
-# Alpine
-docker pull caijiamx/1panel:dood-2.0.15-alpine-cn
-</code></pre>
-<p>将 {version} 替换为 2.0.0~2.0.15，{os} 替换为 ubuntu/centos/alpine。</p>
-<h3 id='目录结构'>目录结构</h3>
-<pre><code>alpine/   # Alpine Dockerfile 模板
-centos/   # CentOS Dockerfile 模板
-ubuntu/   # Ubuntu Dockerfile 模板
-hack/     # 安装与 systemctl 注释脚本、supervisord 配置
-hack_cn/     # 安装与 systemctl 注释脚本、supervisord 配置
-.github/workflows/main.yml  # GitHub Action CI 多版本/多系统/多架构构建与推送
-docker-compose.yml          # 容器运行配置
-Makefile                    # 本地构建/推送/矩阵任务
-</code></pre>
-<h2 id='实现方案'>实现方案</h2>
-<h3 id='systemctl-注释说明'>systemctl 注释说明</h3>
-<ul>
-<li>脚本：hack/fix_systemctl_start_cmd.sh</li>
-<li>作用：在安装包解压后、执行 install.sh 前，注释掉 systemctl 相关步骤，避免容器依赖 systemd。</li>
-<li>影响：面板内基于 systemctl 的检查/操作可能不可用或显示异常；进程管理交由 supervisord。</li>
-
-</ul>
-<p>&nbsp;</p>
-<h4 id='涉及-systemctl-管理的服务'>涉及 systemctl 管理的服务</h4>
-<p>20250909 由GitHub copilot 生成</p>
-<p>根据 1Panel-dev/1Panel 仓库代码，涉及 systemctl 管理的服务主要有以下几类。如果 systemctl 不可用（如 WSL、部分容器、极简发行版等），这些服务的启动/停止/重启/状态查询都将受到影响，面板功能也会有部分不可用或异常。</p>
-<figure class='table-figure'><table>
-<thead>
-<tr><th>服务名称</th><th>作用/描述</th><th>systemctl不可用时影响</th><th>代码依据/说明</th><th>说明</th></tr></thead>
-<tbody><tr><td>1panel-core.service</td><td>1Panel 核心服务</td><td>无法启动/重启/查询状态，面板核心功能异常</td><td>core/app/service/setting.go, common.go、core/app/service/upgrade.go、RestartService (common.go), UpdateBindInfo/UpdatePort/UpdateSSL (setting.go), UpgradeService.Upgrade</td><td>面板配置、端口、SSL、主控服务、升级、回滚等重启</td></tr><tr><td>1panel-agent.service</td><td>1Panel Agent服务（节点服务）</td><td>无法启动/重启/查询状态，节点管理异常</td><td>agent/utils/common.go, common.go、core/app/service/upgrade.go、RestartService (common.go), UpgradeService.Upgrade</td><td>节点服务重启、升级后重启、节点异常恢复</td></tr><tr><td>docker.service, docker.socket</td><td>Docker 守护进程</td><td>容器管理、重启、停止等功能不可用</td><td>agent/app/service/docker.go</td><td>容器服务、应用容器管理、配置变更后重启</td></tr><tr><td>fail2ban.service</td><td>防暴力破解服务（Fail2Ban）</td><td>防护规则无法启停、重载或查询状态</td><td>agent/utils/toolbox/fail2ban.go</td><td>防护规则启停、重载、状态查询</td></tr><tr><td>clamav/clamd/freshclam</td><td>病毒扫描服务（ClamAV）</td><td>杀毒、病毒库更新相关功能不可用</td><td>agent/app/service/clam.go</td><td>杀毒服务启停、查杀操作、病毒库更新</td></tr><tr><td>ssh/sshd.service</td><td>SSH 服务</td><td>远程管理、SSH配置功能异常</td><td>agent/app/service/ssh.go</td><td>SSH服务启停、配置变更、安全加固</td></tr><tr><td>supervisor/supervisord</td><td>进程守护服务（Supervisor）</td><td>守护进程管理功能不可用</td><td>前端文案、脚本管理相关</td><td>守护进程启停、自动化任务、脚本运行</td></tr></tbody>
-</table></figure>
-<h4 id='代码说明'>代码说明</h4>
-<ol start='' >
-<li><p><strong>所有涉及 systemctl 的服务都依赖 systemd</strong></p>
-<ul>
-<li>代码中通过 systemctl 命令（如 restart, start, stop, status, is-active, is-enabled）管理服务。</li>
-<li>如 systemctl 不可用，这些命令将执行失败，服务无法被面板控制。</li>
-
-</ul>
-</li>
-<li><p><strong>Docker、SSH、Fail2Ban、ClamAV、Supervisor 这些常用服务都通过 systemctl 集成</strong></p>
-<ul>
-<li>面板会自动调用 systemctl 重启、检测状态，如果命令失败则功能不可用或报错。</li>
-<li>部分服务有 snap 或其它方式检测</li>
-<li>代码如 agent/utils/systemctl/systemctl.go 有 snap 服务的检测和操作，但依赖 snap 环境，非 systemctl 的通用替代。</li>
-
-</ul>
-</li>
-<li><p><strong>面板自身服务（core/agent）也通过 systemctl 管理</strong></p>
-<ul>
-<li>面板自身无法自我重启/恢复，也无法远程管理节点。</li>
-
-</ul>
-</li>
-
-</ol>
-<hr />
-<h4 id='systemctl-不可用时影响的面板功能'>systemctl 不可用时影响的面板功能</h4>
-<ul>
-<li>面板显示服务异常或未运行</li>
-<li>无法通过面板启停 Docker、Agent、SSH、守护进程等</li>
-<li>部分面板配置修改后无法自动生效（如端口、SSL等）</li>
-
-</ul>
-<p>详细参考：<a href='#服务功能限制'>服务&amp;功能限制</a></p>
-<h4 id='主要接口函数举例'>主要接口/函数举例</h4>
-<ul>
-<li><code>/api/v1/setting/update_port</code> —— 端口修改，涉及 <code>RestartService</code> 调用 systemctl 重启 core 服务</li>
-<li><code>/api/v1/setting/update_ssl</code> —— SSL 配置修改后，涉及 systemctl 重启 core 服务</li>
-<li><code>/api/v1/upgrade/upgrade</code> —— 升级接口，涉及 <code>UpgradeService.Upgrade</code>，systemctl 重启 core/agent 服务</li>
-<li><code>/api/v1/upgrade/rollback</code> —— 回滚接口，涉及 <code>UpgradeService.handleRollback</code>，systemctl 重启 core/agent 服务</li>
-<li><code>/api/v1/docker/restart</code> —— 容器管理，调用 <code>OperateDocker</code>，systemctl 重启 docker 服务</li>
-<li><code>/api/v1/agent/restart</code> —— 节点管理，重启 agent 服务</li>
-<li><code>/api/v1/fail2ban/operate</code> —— 安全防护策略启停</li>
-<li><code>/api/v1/clam/operate</code> —— 病毒查杀服务启停</li>
-<li><code>/api/v1/ssh/operate</code> —— SSH 服务启停与配置</li>
-<li><code>/api/v1/supervisor/operate</code> —— 守护进程服务启停</li>
-
-</ul>
-<p>&nbsp;</p>
-<p>Upgrade 相关 systemctl 调用补全说明</p>
-<ul>
-<li><p>代码如 <code>core/app/service/upgrade.go</code> 的 <code>UpgradeService.Upgrade</code> 实现，升级成功后会调用：</p>
-<ul>
-<li><code>systemctl daemon-reload</code></li>
-<li><code>systemctl restart 1panel-agent.service</code></li>
-<li><code>systemctl restart 1panel-core.service</code></li>
-
-</ul>
-</li>
-<li><p>回滚也会涉及 systemctl 重启相关服务。</p>
-</li>
-<li><p>其他分支或历史版本中，升级、回滚等函数如 <code>handleRollback</code>、<code>handleBackup</code> 也会调用 <code>systemctl daemon-reload &amp;&amp; systemctl restart 1panel.service</code>。</p>
-</li>
-
-</ul>
-<h3 id='supervisord-说明'>supervisord 说明</h3>
-<ul>
-<li><p>配置：hack/supervisord.conf（nodaemon=true 前台运行）</p>
-</li>
-<li><p>托管：</p>
-<ul>
-<li>program:1panel-core -&gt; /usr/bin/1panel-core</li>
-<li>program:1panel-agent -&gt; /usr/bin/1panel-agent</li>
-
-</ul>
-</li>
-<li><p>常用命令：</p>
-</li>
-
-</ul>
-<pre><code class='language-shell' lang='shell'>supervisorctl status
-supervisorctl restart all
-supervisorctl reload
-</code></pre>
-<h4 id='为什么不使用systemd'>为什么不使用systemd</h4>
-<p>运行一个 systemd ，通常需要这样设置：</p>
-<pre><code class='language-shell' lang='shell'>docker run -d -it \
-  --name ubuntu2404-systemd \
-  --privileged \
-  --cgroupns=host \
-  --tmpfs=/run \
-  --tmpfs=/tmp \
-  --volume=/sys/fs/cgroup:/sys/fs/cgroup:rw \
-  trfore/docker-ubuntu2404-systemd:latest
-</code></pre>
-<p>核心风险点在于 <code>--privileged + --cgroupns=host + --volume /sys/fs/cgroup</code>：</p>
-<ol start='' >
-<li><p><strong>宿主机隔离被打破</strong></p>
-<ul>
-<li><code>--privileged</code> 让容器有所有 Linux capabilities（cap_sys_admin、cap_net_admin 等），等同 root。</li>
-<li>可以直接操作宿主机设备文件、网络栈，甚至加载内核模块。</li>
-
-</ul>
-</li>
-<li><p><strong>cgroup 控制泄露</strong></p>
-<ul>
-<li><code>--cgroupns=host</code> + 挂载 <code>/sys/fs/cgroup</code> → 容器能操作宿主机的 cgroups，修改 CPU/内存限制、杀死其他容器的进程。</li>
-
-</ul>
-</li>
-<li><p><strong>宿主机提权/逃逸</strong></p>
-<ul>
-<li>特权容器几乎等于在宿主机上直接跑 root，隔离形同虚设。</li>
-<li>如果攻击者拿到这个容器的 shell，就相当于拿到了宿主机 root。</li>
-
-</ul>
-</li>
-
-</ol>
-<h2 id='结论'>结论</h2>
-<ol start='' >
-<li>不要在生产环境使用 <code>--privileged</code> 参数。</li>
-<li>现有阶段 docker 运行 systemd 不可行。</li>
-<li>作为备用方案，可使用 supervisord 来服务管理。</li>
-
-</ol>
-<p>参考版本库：</p>
-<ol start='' >
-<li><a href='https://github.com/trfore/docker-ubuntu2404-systemd' target='_blank' class='url'>https://github.com/trfore/docker-ubuntu2404-systemd</a></li>
-<li><a href='https://github.com/antmelekhin/docker-systemd' target='_blank' class='url'>https://github.com/antmelekhin/docker-systemd</a></li>
-<li>建议只在开发环境使用。</li>
-
-</ol>
-<h3 id='dood说明'>DooD说明</h3>
-<p>本指南提供一种“非官方”的 1Panel Docker 部署方案：</p>
-<ol start='' >
-<li>所谓的 DooD，就是 Docker Out of Docker。简单来讲，就是在一个 docker 容器内部调用外部的 Docker。
-最简单的实现方式，共享 Host docker 的 sock 和 volumes。</li>
-<li>使用 DooD（Docker‑out‑of‑Docker）复用宿主机 Docker 引擎，配合 supervisord 管理进程，避免在容器内运行 systemd 与 --privileged。</li>
-<li>请在可信/单租户场景谨慎使用。需单独配置安全规则，如 WAF、防火墙。</li>
-
-</ol>
-<p>&nbsp;</p>
-<p>容器内需复用宿主机 Docker 以安装/编排应用，需挂载：</p>
-<ul>
-<li>/var/run/docker.sock:/var/run/docker.sock</li>
-<li>/var/lib/docker/volumes:/var/lib/docker/volumes</li>
-<li>数据持久化目录（示例将 /1panel_app/data/ 映射到容器内 /opt/）</li>
-
-</ul>
-<p>参考docker-compose.yml：</p>
-<pre><code class='language-yml' lang='yml'># 关键配置
-volumes:
-      # make docker out of docker work
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/lib/docker/volumes:/var/lib/docker/volumes
-      - /1panel_app/data/:/opt/
-</code></pre>
-<p>&nbsp;</p>
-<h3 id='为什么选择dood'>为什么选择DooD</h3>
-<h3 id='方案选型dood-vs-dind-vs-sysbox'>方案选型：DooD vs DinD vs Sysbox</h3>
-<ul>
-<li><p>DooD（本指南采用）</p>
-<ul>
-<li>优点：共享宿主机镜像缓存，构建快、占用少；实现简单</li>
-<li>缺点：安全风险高（容器可控制宿主机 Docker），不适合多租户</li>
-<li>适用：本机/可信环境、个人或单租户 CI</li>
-
-</ul>
-</li>
-<li><p>DinD</p>
-<ul>
-<li>优点：容器内外引擎隔离</li>
-<li>缺点：需要 --privileged，存在逃逸风险</li>
-<li>适用：临时环境/非生产安全场景，谨慎使用</li>
-
-</ul>
-</li>
-<li><p>Sysbox</p>
-<ul>
-<li>相对更安全的 DinD 替代，但对内核/发行版有要求，生态不如官方成熟</li>
-
-</ul>
-</li>
-
-</ul>
-<p>结论：</p>
-<p>在当前条件下选用 DooD + supervisord，明确拒绝在生产环境用 --privileged 跑 systemd。</p>
-<h3 id='dood-vs-dind-vs-sysbox对比'>DooD vs DinD vs Sysbox对比</h3>
-<figure class='table-figure'><table>
-<thead>
-<tr><th>特性维度</th><th><strong>DooD (Docker-out-of-Docker)</strong></th><th><strong>DinD (Docker-in-Docker)</strong></th><th><strong>Sysbox</strong></th></tr></thead>
-<tbody><tr><td><strong>基本原理</strong></td><td>容器内挂载宿主机 Docker socket，直接复用宿主机 Docker 引擎</td><td>在容器中运行独立的 Docker 引擎（DinD 镜像）</td><td>使用 Sysbox 作为底层 runtime，容器内可安全运行 Docker / K8s 等系统级 workload</td></tr><tr><td><strong>优点</strong></td><td>- 共享宿主机镜像缓存，构建速度快- 节省磁盘空间</td><td>- 简单易用，官方有现成 DinD 镜像- 容器内外引擎隔离，避免直接操作宿主机容器</td><td>- 无需 privileged 容器- 使用 Linux user namespace 提供强隔离- 支持系统级 workload（Docker/K8s）- 与 Docker/K8s 无缝集成，使用方式类似 <code>runc</code></td></tr><tr><td><strong>缺点</strong></td><td>- 安全风险极大：容器可直接控制宿主机 Docker，甚至删除宿主机所有容器- 不适合多租户环境- bind mount 限制，某些功能（如 volume 挂载）可能失效</td><td>- 需要 privileged 权限运行，容器内 root = 宿主机 root- root 拥有全部 Linux capabilities，存在逃逸风险- 可直接访问宿主机设备和 /proc、/sys，能修改内核状态</td><td>- 需要较新的 Linux 内核- 目前只支持部分 Linux 发行版- 仍在社区发展中，生态不如 Docker 官方成熟</td></tr><tr><td><strong>安全风险</strong></td><td>高：容器内用户几乎等于宿主机 root 权限</td><td>高：privileged 容器 = 宿主机 root + 全 capability，容易被利用</td><td>相对低：用户隔离（userns）、procfs/sysfs 虚拟化、syscall 拦截，避免直接 root 映射</td></tr><tr><td><strong>适用场景</strong></td><td>- 本地开发临时测试- 单人或可信环境</td><td>- CI/CD 流水线需要独立 Docker 环境- 简单快速的沙箱环境</td><td>- CI/CD 多租户 runner- 安全沙箱环境- 在容器中运行系统级 workload（如 Docker/K8s）</td></tr><tr><td><strong>推荐程度</strong></td><td>✅ 推荐（需控制访问权限）</td><td>⚠️ 谨慎使用（非生产安全场景）</td><td>❌ 不推荐（配置复杂）</td></tr></tbody>
-</table></figure>
-<p>参考链接：</p>
-<ol start='' >
-<li><a href='https://www.docker.com/resources/docker-in-docker-containerized-ci-workflows-dockercon-2023/'>Docker-in-Docker: Containerized CI Workflows</a></li>
-
-</ol>
-<h2 id='构建说明'>构建说明</h2>
-<h3 id='本地构建makefile'>本地构建（Makefile）</h3>
-<p>依赖：Docker Desktop（含 buildx），已登录 DockerHub（如需推送）。</p>
-<p>列出命令：</p>
-<pre><code class='language-shell' lang='shell'>make help
-</code></pre>
-<p>常用命令：</p>
-<ul>
-<li>初始化构建器（一次）：make builder</li>
-<li>构建单个镜像（不推送）：make build OS=ubuntu VERSION=2.0.15 ONEPANEL_TYPE=cn</li>
-<li>推送单个镜像：make push OS=centos VERSION=2.0.0 ONEPANEL_TYPE=cn</li>
-<li>本机调试（加载到本地）：make load OS=ubuntu VERSION=2.0.15</li>
-<li>多架构构建（不推送）：make buildx OS=centos VERSION=2.0.0</li>
-<li>多架构构建并推送：make push OS=alpine VERSION=2.0.15</li>
-<li>批量矩阵推送（3 OS × 2.0.0~2.0.15）：make matrix-push</li>
-
-</ul>
-<p>变量：</p>
-<ul>
-<li>OS=ubuntu|centos|alpine</li>
-<li>VERSION=2.0.0~2.0.15（注入到 {%OnePanel_Version%}）</li>
-<li>ONEPANEL_TYPE=pro|cn（注入到 {%OnePanel_Type%}）</li>
-<li>PLATFORMS=linux/amd64,linux/arm64（可改为单架构）</li>
-<li>IMAGE_REPO=caijiamx/1panel，IMAGE_TAG_PREFIX=dood</li>
-
-</ul>
-<p>构建示例</p>
-<pre><code class='language-shell' lang='shell'># 调试单个命令
-make -n build OS=ubuntu VERSION=2.0.15 ONEPANEL_TYPE=cn
-
-# 构建单个镜像
-make build OS=ubuntu VERSION=2.0.15 ONEPANEL_TYPE=cn
-</code></pre>
-<p>命名规范：caijiamx/1panel:dood-{version}-{os}-cn</p>
-<h3 id='github-actions-构建'>GitHub Actions 构建</h3>
-<p>工作流：.github/workflows/main.yml（“Build and Push 1Panel Images”）</p>
-<ul>
-<li><p>触发方式：推送分支 main/dev 或手动 workflow_dispatch</p>
-</li>
-<li><p>构建矩阵：OS=[ubuntu, centos, alpine]；VERSION=[2.0.0..2.0.15]</p>
-</li>
-<li><p>多架构：linux/amd64, linux/arm64（使用 setup-qemu + buildx）</p>
-</li>
-<li><p>版本替换：构建前用 sed 将 Dockerfile 中 v{%OnePanel_Version%} 替换为具体版本</p>
-</li>
-<li><p>推送目标：caijiamx/1panel:dood-{version}-{os}</p>
-</li>
-<li><p>凭据：需要在仓库 Secrets 配置</p>
-<ul>
-<li>DOCKERHUB_USERNAME</li>
-<li>DOCKERHUB_TOKEN</li>
-
-</ul>
-</li>
-<li><p>使用方式：Actions 页面选择 main 工作流，点 Run workflow，选择 os 与 version</p>
-</li>
-
-</ul>
-<h2 id='升级说明'>升级说明</h2>
-<p>从 v2.0.0 -&gt; v2.0.11升级为例，准备工作：</p>
-<ol start='' >
-<li>备份原始镜像，如 v2.0.0</li>
-<li>备份挂载数据。</li>
-<li>停止容器。</li>
-
-</ol>
-<h3 id='版本升级步骤'>版本升级步骤</h3>
-<p>开始升级步骤：</p>
-<ol start='' >
-<li>构建/拉取新版本镜像（例如 2.0.11）</li>
-<li>手动修改版本号</li>
-<li>启动新服务。</li>
-
-</ol>
-<h3 id='手动修改版本号'>手动修改版本号</h3>
-<p>官方安装会自动维护版本号；本镜像方案需手动同步版本号（示例使用 sqlite3）：</p>
-<pre><code class='language-shell' lang='shell'>sudo apt-get update &amp;&amp; apt-get install -y sqlite3
-cp /opt/1panel/db/core.db  /opt/1panel/db/core.db.bak
-cp /opt/1panel/db/agent.db /opt/1panel/db/agent.db.bak
-sqlite3 /opt/1panel/db/core.db &quot;UPDATE settings SET value=&#39;v2.0.11&#39; WHERE key=&#39;SystemVersion&#39;;&quot;
-sqlite3 /opt/1panel/db/agent.db &quot;UPDATE settings SET value=&#39;v2.0.11&#39; WHERE key=&#39;SystemVersion&#39;;&quot;
-</code></pre>
-<p>更新镜像后重启容器（保留 /opt/ 数据卷）。</p>
-<h2 id='常见问题'>常见问题</h2>
-<h3 id='服务功能限制'>服务&amp;功能限制</h3>
-<ol start='' >
-<li>面板-&gt;右下角更新-&gt;“立即升级”不可用。官方升级逻辑依赖 systemctl 停启服务。</li>
-<li><del>面板-&gt;容器功能不可用。服务判定 docker 存活依赖 systemctl status，后续会优化不再依赖 systemctl。</del></li>
-<li>nginx_status 默认仅监听 127.0.0.1，需自行调整。参考：<a href='#openresty-当前状态报错'>OpenResty 当前状态报错</a></li>
-<li>部分应用安装时挂载路径出现异常，需按实际路径修正。</li>
-<li>1panel-core&amp;1panel-agent 运行用户为 root。指定用户 nobody 运行的话，服务 1panel-agent 会挂掉。</li>
-<li>工具箱-&gt;进程守护、FTP、Fail2ban 不可用。</li>
-<li>v2.0.11 版本改进了 docker 服务判定逻辑，面板-&gt;容器功能基本可用（完整功能未全面测试）。</li>
-<li>v2.0.11 新增磁盘管理，不建议使用该功能。</li>
-<li>v2.0.12 - v2.0.15 待验证兼容性。</li>
-
-</ol>
-<p>面板不可用功能表格如下：</p>
-<figure class='table-figure'><table>
-<thead>
-<tr><th>功能</th><th>是否可用</th><th>备注</th></tr></thead>
-<tbody><tr><td>面板-&gt;立即升级（右下角）</td><td>❌</td><td>&nbsp;</td></tr><tr><td>网站-&gt;网站-&gt;OpenResy设置-&gt;当前状态<br/>网站-&gt;运行环境-&gt;php-fpm容器状态检查</td><td>❌</td><td>&nbsp;</td></tr><tr><td>工具箱-&gt;进程守护、FTP、Fail2ban、磁盘管理</td><td>❌</td><td>功能未测试</td></tr><tr><td>高级功能</td><td>❌</td><td>功能未测试</td></tr></tbody>
-</table></figure>
-<h3 id='faq'>FAQ</h3>
-<h4 id='安装应用报错-are-you-trying-to-mount-a-directory-onto-a-file'>安装应用报错 “Are you trying to mount a directory onto a file”</h4>
-<ul>
-<li>原因：主机路径与容器内路径不匹配（文件/目录）</li>
-<li>处理：按应用需求修正宿主机路径与映射关系</li>
-
-</ul>
-<p>举例：</p>
-<pre><code class='language-yml' lang='yml'># 容器内docker-compose.yml配置
-- ${WEBSITE_DIR}:/www -&gt; /1panel_app/data/1panel/www:/www
-# 容器内默认 1panel 项目目录:/opt/1panel
-</code></pre>
-<p>&nbsp;</p>
-<p>常用变量</p>
-<pre><code># 1panel 使用变量，用于文件 docker-compose.yml
-${CONTAINER_NAME} # 自定义容器名
-
-${IMAGE_NAME} # 自定义镜像名
-
-${PANEL_APP_PORT_HTTP} # 自定义端口
-
-${PANEL_WEBSITE_DIR} # 默认为 /opt/1panel/www
-
-${WEBSITE_DIR} # 默认为 /opt/1panel/www
-</code></pre>
-<p>&nbsp;</p>
-<h4 id='openresty-当前状态报错'>OpenResty 当前状态报错</h4>
-<p>报错信息：</p>
-<pre><code>服务内部错误: Get &quot;http://127.0.0.1/nginx_status&quot;: dial tcp 127.0.0.1:80: connect: connection refused
-</code></pre>
-<p>原因：健康检查 127.0.0.1 访问失败，容器内访问 127.0.0.1 会访问 1panel 监听80端口，而 openresty 是单独的容器，1panel -&gt; openresty 可以走 <code>http://openresty</code>。</p>
-<p>处理：可为健康检查添加 <code>host：server_name 127.0.0.1 openresty;</code> 正确访问地址：<a href='http://openresty/nginx_status' target='_blank' class='url'>http://openresty/nginx_status</a>。</p>
-<p>彻底解决问题，需要修改官方实现代码：</p>
-<pre><code class='language-go' lang='go'># 文件路径：agent/app/service/nginx.go
-func (n NginxService) GetStatus() (response.NginxStatus, error) {
-  // bala
-  url := &quot;http://127.0.0.1/nginx_status&quot;
-	if httpPort != 80 {
-		url = fmt.Sprintf(&quot;http://127.0.0.1:%v/nginx_status&quot;, httpPort)
-	}
-	useDoodMode := true
-	if useDoodMode {
-		localServerName := &quot;127.0.0.1&quot;
-		openrestyContainerName := &quot;openresty&quot;
-		url = strings.ReplaceAll(url, localServerName, openrestyContainerName)
-	}
-  // bala
-}
-</code></pre>
-<p>&nbsp;</p>
-<h4 id='反向代理配置'>反向代理配置</h4>
-<p>WebSocket/升级头</p>
-<pre><code class='language-nginx' lang='nginx'>proxy_http_version 1.1;
-proxy_set_header Upgrade $http_upgrade;
-proxy_set_header Connection &quot;upgrade&quot;;
-proxy_set_header Host $host;  # 若需要固定后端 Host，请显式设置
-</code></pre>
-<p>&nbsp;</p>
-<h4 id='安全入口与账户信息'>安全入口与账户信息</h4>
-<ul>
-<li><p>开启安全入口后，通过容器内命令查看：1pctl user-info</p>
-</li>
-<li><p>首次部署务必修改用户名/密码/入口</p>
-</li>
-<li><p>建议WAF+网络防火墙做好访问控制。</p>
-<p>&nbsp;</p>
-</li>
-
-</ul>
-<h4 id='cloudflare-常见端口'>Cloudflare 常见端口</h4>
-<ul>
-<li>HTTP：80, 8080, 8880, 2052, 2082, 2086, 2095</li>
-<li>HTTPS：443, 2053, 2083, 2087, 2096, 8443</li>
-
-</ul>
-<p>&nbsp;</p>
-<h4 id='资源与超时'>资源与超时</h4>
-<p>CPU 限额过低可能导致接口超时（偶尔 5xx/超时），建议 1.0~1.5 core。</p>
-<p>&nbsp;</p>
-<h2 id='安全提示'>安全提示</h2>
-<ul>
-<li>DooD 允许容器控制宿主机 Docker，有一定安全风险。仅在可信、单租户环境使用。</li>
-<li>建议配置网络防火墙允许访问的IP以及端口。</li>
-<li>建议对面板做访问控制：域名限制、IP端口、机器隔离。</li>
-
-</ul>
-<h2 id='参考项目'>参考项目</h2>
-<ol start='' >
-<li><a href='https://github.com/okxlin/docker-1panel'>okxlin/docker-1panel</a>、<a href='https://github.com/tangger2000/1panel-dood'>tangger2000/1panel-dood</a>（项目已归档）</li>
-<li><a href='https://github.com/purainity/docker-1panel-v2'>purainity/docker-1panel-v2</a>：<a href='https://github.com/dph5199278/docker-1panel'>dph5199278/docker-1panel</a>、<a href='https://github.com/Xeath/1panel-in-docker'>Xeath/1panel-in-docker</a></li>
-<li></li>
-
-</ol>
-<h2 id='维护者'>维护者</h2>
-<ul>
-<li>GeekWho <a href='mailto:geekwho_eth@outlook.com' target='_blank' class='url'>geekwho_eth@outlook.com</a></li>
-
-</ul>
-<p>&nbsp;</p>
-<p><a href='index.html'>返回首页</a></p>
+</div><p><span>本仓库用于构建并发布 1Panel 的 Docker 镜像，采用 DooD（Docker-out-of-Docker）设计，复用宿主机 Docker 引擎，使用 supervisord 管理 1Panel 进程，避免在容器内运行 systemd 或使用 --privileged。</span></p><ul><li><p><span>当前镜像最新版本：2.2.3</span></p></li><li><p><span>支持多版本：2.0.0 ~ 2.2.3（通过变量替换注入）</span></p></li><li><p><span>支持多系统：ubuntu、centos、alpine</span></p></li><li><p><span>支持多架构：amd64、arm64（buildx + QEMU）</span></p></li><li><p><span>镜像命名：caijiamx/1panel:dood-{version}-{os}-cn</span></p></li><li><p><span>构建方式：GitHub Actions 工作流 + 本地 Makefile</span></p></li></ul><p><span>提示：本方案适合可信、单租户环境，生产环境使用需严格控制访问并做好防护策略（建议WAF+网络防火墙）。</span></p><h2 id='目录'><span>目录</span></h2><ul><li><p><a href='#使用说明'><span>使用说明</span></a></p><ul><li><p><a href='#特性与设计'><span>特性与设计</span></a></p></li><li><p><a href='#支持系统与命名规范'><span>支持系统与命名规范</span></a></p></li><li><p><a href='#快速开始'><span>快速开始</span></a></p><ul><li><p><a href='#docker-run'><span>docker run</span></a></p></li><li><p><a href='#docker-compose'><span>docker-compose</span></a></p></li></ul></li><li><p><a href='#镜像拉取'><span>镜像拉取</span></a></p></li><li><p><a href='#目录结构'><span>目录结构</span></a></p></li></ul></li><li><p><a href='#实现方案'><span>实现方案</span></a></p><ul><li><p><a href='#systemctl-注释说明'><span>systemctl 注释说明</span></a></p></li><li><p><a href='#supervisord-说明'><span>supervisord 说明</span></a></p></li><li><p><a href='#dood说明'><span>DooD说明</span></a></p></li><li><p><a href='#为什么选择dood'><span>为什么选择DooD</span></a></p></li><li><p><a href='#dood-vs-dind-vs-sysbox对比'><span>DooD vs DinD vs Sysbox对比</span></a></p></li></ul></li><li><p><a href='#构建说明'><span>构建说明</span></a></p><ul><li><p><a href='#本地构建makefile'><span>本地构建（Makefile）</span></a></p></li><li><p><a href='#github-actions-构建'><span>GitHub Actions 构建</span></a></p></li></ul></li><li><p><a href='#升级说明'><span>升级说明</span></a></p><ul><li><p><a href='#版本升级步骤'><span>版本升级步骤</span></a></p></li></ul></li><li><p><a href='#常见问题'><span>常见问题</span></a></p><ul><li><p><a href='#服务功能限制'><span>服务&amp;功能限制</span></a></p></li><li><p><a href='#faq'><span>FAQ</span></a></p></li></ul></li></ul><h2 id='使用说明'><span>使用说明</span></h2><h3 id='特性与设计'><span>特性与设计</span></h3><ul><li><p><span>DooD：容器共享宿主机 Docker 引擎与缓存，构建更快、占用更小。</span></p></li><li><p><span>进程管理：容器内不运行 systemd，改用 supervisord 前台托管 1panel-core 与 1panel-agent。</span></p></li><li><p><span>版本变量注入：Dockerfile 中包含占位符，示例（ubuntu）：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RUN bash /1panel/quick_start.sh v{%OnePanel_Version%}</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>构建时以 sed 将 {%OnePanel_Version%} 替换为具体版本（2.0.0~2.0.15）。</span></p></li><li><p><span>多架构：buildx + QEMU 生成 linux/amd64、linux/arm64 镜像；脚本会自动识别归档架构并下载对应包。</span></p></li></ul><h3 id='支持系统与命名规范'><span>支持系统与命名规范</span></h3><ul><li><p><span>系统：ubuntu、centos、alpine</span></p></li><li><p><span>版本：2.0.0 ~ 2.0.15</span></p></li><li><p><span>架构：amd64、arm64（自动匹配下载包）</span></p></li><li><p><span>标签规范：</span></p><ul><li><p><span>caijiamx/1panel:dood-{version}-{os}-cn</span></p></li><li><p><span>例：caijiamx/1panel:dood-2.0.15-ubuntu-cn</span></p></li></ul></li></ul><h3 id='快速开始'><span>快速开始</span></h3><h4 id='docker-run'><span>docker run</span></h4><p><span>容器构建自动生成用户名、密码、端口，可启动后在容器内调整。这里假设面板默认端口为 8888。运行命令示例：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker run <span class="cm-attribute">-d</span> <span class="cm-attribute">--name</span> 1panel <span class="cm-attribute">--restart</span> unless-stopped \</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">-p</span> <span class="cm-number">8888</span>:8888 \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">-v</span> /var/run/docker.sock:/var/run/docker.sock \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">-v</span> /var/lib/docker/volumes:/var/lib/docker/volumes \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">-v</span> /1panel_app/data/:/opt/ \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  caijiamx/1panel:dood-2.0.15-ubuntu-cn</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><p><span>初始化（容器内）：</span></p><p><strong><span>重要的事情讲三遍！！！</span></strong></p><p><strong><span>首次部署务必修改用户名/密码/入口!</span></strong></p><p><strong><span>首次部署务必修改用户名/密码/入口!</span></strong></p><p><strong><span>首次部署务必修改用户名/密码/入口!</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker exec <span class="cm-attribute">-it</span> 1panel <span class="cm-builtin">bash</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 查看安全入口与当前配置</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1panel user-info</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 修改端口/用户/密码</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1panel update port</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1panel update username</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1panel update password</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 184px;"></div><div class="CodeMirror-gutters" style="display: none; height: 184px;"></div></div></div></pre><h4 id='docker-compose'><span>docker-compose</span></h4><p><span>仓库内提供示例 docker-compose.yml（DooD 必要挂载已包含）：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="yaml"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="yaml"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">services</span><span class="cm-meta">:</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">  one_panel</span><span class="cm-meta">:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom"> &nbsp;  image</span><span class="cm-meta">: </span>caijiamx/1panel<span class="cm-meta">:</span>dood-2.0.15-ubuntu-cn</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom"> &nbsp;  container_name</span><span class="cm-meta">: </span>1panel</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom"> &nbsp;  restart</span><span class="cm-meta">: </span>unless-stopped</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom"> &nbsp;  ports</span><span class="cm-meta">:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta"> &nbsp; &nbsp;  - </span><span class="cm-string">"8888:8888"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom"> &nbsp;  volumes</span><span class="cm-meta">:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta"> &nbsp; &nbsp;  - </span>/var/run/docker.sock:/var/run/docker.sock</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta"> &nbsp; &nbsp;  - </span>/var/lib/docker/volumes:/var/lib/docker/volumes</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta"> &nbsp; &nbsp;  - </span>/1panel_app/data/:/opt/</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 253px;"></div><div class="CodeMirror-gutters" style="display: none; height: 253px;"></div></div></div></pre><p><span>docker-compose.yml关键字段：</span></p><ul><li><p><span>image：镜像标签如 caijiamx/1panel:dood-2.0.15-ubuntu-cn</span></p></li><li><p><span>ports：对外端口映射，示例 8888:8888</span></p></li><li><p><span>volumes（DooD 必要挂载）：</span></p><ul><li><p><span>/var/run/docker.sock:/var/run/docker.sock</span></p></li><li><p><span>/var/lib/docker/volumes:/var/lib/docker/volumes</span></p></li><li><p><span>/panel_app/data/:/opt/  # 建议统一此路径，便于数据持久化</span></p></li></ul></li><li><p><span>healthcheck：简单进程检查（core/agent 是否存在）</span></p></li><li><p><span>extra_hosts：host-gateway 方便访问宿主机</span></p></li><li><p><span>networks：使用外部网络 one_panel（先创建网络）</span></p></li></ul><p><span>启动服务：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker network create one_panel</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker compose up -d</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><p><span>提示：</span></p><ul><li><p><span>不使用 --privileged、不挂载 /sys/fs/cgroup，不在容器内运行 systemd。</span></p></li><li><p><span>持久化 /opt/（默认安装到 /opt/1panel）。</span></p></li></ul><h3 id='镜像拉取'><span>镜像拉取</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Ubuntu</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker pull caijiamx/1panel:dood-2.0.15-ubuntu-cn</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># CentOS</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker pull caijiamx/1panel:dood-2.0.15-centos-cn</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Alpine</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker pull caijiamx/1panel:dood-2.0.15-alpine-cn</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><p><span>将 {version} 替换为 2.0.0~2.0.15，{os} 替换为 ubuntu/centos/alpine。</span></p><h3 id='目录结构'><span>目录结构</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">alpine/ &nbsp; # Alpine Dockerfile 模板</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">centos/ &nbsp; # CentOS Dockerfile 模板</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ubuntu/ &nbsp; # Ubuntu Dockerfile 模板</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">hack/ &nbsp; &nbsp; # 安装与 systemctl 注释脚本、supervisord 配置</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">hack_cn/ &nbsp; &nbsp; # 安装与 systemctl 注释脚本、supervisord 配置</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.github/workflows/main.yml  # GitHub Action CI 多版本/多系统/多架构构建与推送</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker-compose.yml &nbsp; &nbsp; &nbsp; &nbsp;  # 容器运行配置</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Makefile &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  # 本地构建/推送/矩阵任务</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 184px;"></div><div class="CodeMirror-gutters" style="display: none; height: 184px;"></div></div></div></pre><h2 id='实现方案'><span>实现方案</span></h2><h3 id='systemctl-注释说明'><span>systemctl 注释说明</span></h3><ul><li><p><span>脚本：hack/fix_systemctl_start_cmd.sh</span></p></li><li><p><span>作用：在安装包解压后、执行 install.sh 前，注释掉 systemctl 相关步骤，避免容器依赖 systemd。</span></p></li><li><p><span>影响：面板内基于 systemctl 的检查/操作可能不可用或显示异常；进程管理交由 supervisord。</span></p></li></ul><p>&nbsp;</p><h4 id='涉及-systemctl-管理的服务'><span>涉及 systemctl 管理的服务</span></h4><p><span>20250909 由GitHub copilot 生成</span></p><p><span>根据 1Panel-dev/1Panel 仓库代码，涉及 systemctl 管理的服务主要有以下几类。如果 systemctl 不可用（如 WSL、部分容器、极简发行版等），这些服务的启动/停止/重启/状态查询都将受到影响，面板功能也会有部分不可用或异常。</span></p><figure class='table-figure'><table><thead><tr><th><span>服务名称</span></th><th><span>作用/描述</span></th><th><span>systemctl不可用时影响</span></th><th><span>代码依据/说明</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>1panel-core.service</span></td><td><span>1Panel 核心服务</span></td><td><span>无法启动/重启/查询状态，面板核心功能异常</span></td><td><span>core/app/service/setting.go, common.go、core/app/service/upgrade.go、RestartService (common.go), UpdateBindInfo/UpdatePort/UpdateSSL (setting.go), UpgradeService.Upgrade</span></td><td><span>面板配置、端口、SSL、主控服务、升级、回滚等重启</span></td></tr><tr><td><span>1panel-agent.service</span></td><td><span>1Panel Agent服务（节点服务）</span></td><td><span>无法启动/重启/查询状态，节点管理异常</span></td><td><span>agent/utils/common.go, common.go、core/app/service/upgrade.go、RestartService (common.go), UpgradeService.Upgrade</span></td><td><span>节点服务重启、升级后重启、节点异常恢复</span></td></tr><tr><td><span>docker.service, docker.socket</span></td><td><span>Docker 守护进程</span></td><td><span>容器管理、重启、停止等功能不可用</span></td><td><span>agent/app/service/docker.go</span></td><td><span>容器服务、应用容器管理、配置变更后重启</span></td></tr><tr><td><span>fail2ban.service</span></td><td><span>防暴力破解服务（Fail2Ban）</span></td><td><span>防护规则无法启停、重载或查询状态</span></td><td><span>agent/utils/toolbox/fail2ban.go</span></td><td><span>防护规则启停、重载、状态查询</span></td></tr><tr><td><span>clamav/clamd/freshclam</span></td><td><span>病毒扫描服务（ClamAV）</span></td><td><span>杀毒、病毒库更新相关功能不可用</span></td><td><span>agent/app/service/clam.go</span></td><td><span>杀毒服务启停、查杀操作、病毒库更新</span></td></tr><tr><td><span>ssh/sshd.service</span></td><td><span>SSH 服务</span></td><td><span>远程管理、SSH配置功能异常</span></td><td><span>agent/app/service/ssh.go</span></td><td><span>SSH服务启停、配置变更、安全加固</span></td></tr><tr><td><span>supervisor/supervisord</span></td><td><span>进程守护服务（Supervisor）</span></td><td><span>守护进程管理功能不可用</span></td><td><span>前端文案、脚本管理相关</span></td><td><span>守护进程启停、自动化任务、脚本运行</span></td></tr></tbody></table></figure><h4 id='代码说明'><span>代码说明</span></h4><ol start='' ><li><p><strong><span>所有涉及 systemctl 的服务都依赖 systemd</span></strong></p><ul><li><p><span>代码中通过 systemctl 命令（如 restart, start, stop, status, is-active, is-enabled）管理服务。</span></p></li><li><p><span>如 systemctl 不可用，这些命令将执行失败，服务无法被面板控制。</span></p></li></ul></li><li><p><strong><span>Docker、SSH、Fail2Ban、ClamAV、Supervisor 这些常用服务都通过 systemctl 集成</span></strong></p><ul><li><p><span>面板会自动调用 systemctl 重启、检测状态，如果命令失败则功能不可用或报错。</span></p></li><li><p><span>部分服务有 snap 或其它方式检测</span></p></li><li><p><span>代码如 agent/utils/systemctl/systemctl.go 有 snap 服务的检测和操作，但依赖 snap 环境，非 systemctl 的通用替代。</span></p></li></ul></li><li><p><strong><span>面板自身服务（core/agent）也通过 systemctl 管理</span></strong></p><ul><li><p><span>面板自身无法自我重启/恢复，也无法远程管理节点。</span></p></li></ul></li></ol><hr /><h4 id='systemctl-不可用时影响的面板功能'><span>systemctl 不可用时影响的面板功能</span></h4><ul><li><p><span>面板显示服务异常或未运行</span></p></li><li><p><span>无法通过面板启停 Docker、Agent、SSH、守护进程等</span></p></li><li><p><span>部分面板配置修改后无法自动生效（如端口、SSL等）</span></p></li></ul><p><span>详细参考：</span><a href='#服务功能限制'><span>服务&amp;功能限制</span></a></p><h4 id='主要接口函数举例'><span>主要接口/函数举例</span></h4><ul><li><p><code>/api/v1/setting/update_port</code><span> —— 端口修改，涉及 </span><code>RestartService</code><span> 调用 systemctl 重启 core 服务</span></p></li><li><p><code>/api/v1/setting/update_ssl</code><span> —— SSL 配置修改后，涉及 systemctl 重启 core 服务</span></p></li><li><p><code>/api/v1/upgrade/upgrade</code><span> —— 升级接口，涉及 </span><code>UpgradeService.Upgrade</code><span>，systemctl 重启 core/agent 服务</span></p></li><li><p><code>/api/v1/upgrade/rollback</code><span> —— 回滚接口，涉及 </span><code>UpgradeService.handleRollback</code><span>，systemctl 重启 core/agent 服务</span></p></li><li><p><code>/api/v1/docker/restart</code><span> —— 容器管理，调用 </span><code>OperateDocker</code><span>，systemctl 重启 docker 服务</span></p></li><li><p><code>/api/v1/agent/restart</code><span> —— 节点管理，重启 agent 服务</span></p></li><li><p><code>/api/v1/fail2ban/operate</code><span> —— 安全防护策略启停</span></p></li><li><p><code>/api/v1/clam/operate</code><span> —— 病毒查杀服务启停</span></p></li><li><p><code>/api/v1/ssh/operate</code><span> —— SSH 服务启停与配置</span></p></li><li><p><code>/api/v1/supervisor/operate</code><span> —— 守护进程服务启停</span></p></li></ul><p>&nbsp;</p><p><span>Upgrade 相关 systemctl 调用补全说明</span></p><ul><li><p><span>代码如 </span><code>core/app/service/upgrade.go</code><span> 的 </span><code>UpgradeService.Upgrade</code><span> 实现，升级成功后会调用：</span></p><ul><li><p><code>systemctl daemon-reload</code></p></li><li><p><code>systemctl restart 1panel-agent.service</code></p></li><li><p><code>systemctl restart 1panel-core.service</code></p></li></ul></li><li><p><span>回滚也会涉及 systemctl 重启相关服务。</span></p></li><li><p><span>其他分支或历史版本中，升级、回滚等函数如 </span><code>handleRollback</code><span>、</span><code>handleBackup</code><span> 也会调用 </span><code>systemctl daemon-reload &amp;&amp; systemctl restart 1panel.service</code><span>。</span></p></li></ul><h3 id='supervisord-说明'><span>supervisord 说明</span></h3><ul><li><p><span>配置：hack/supervisord.conf（nodaemon=true 前台运行）</span></p></li><li><p><span>托管：</span></p><ul><li><p><span>program:1panel-core -&gt; /usr/bin/1panel-core</span></p></li><li><p><span>program:1panel-agent -&gt; /usr/bin/1panel-agent</span></p></li></ul></li><li><p><span>常用命令：</span></p></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">supervisorctl status</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">supervisorctl <span class="cm-builtin">restart</span> all</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">supervisorctl reload</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre><h4 id='为什么不使用systemd'><span>为什么不使用systemd</span></h4><p><span>运行一个 systemd ，通常需要这样设置：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker run <span class="cm-attribute">-d</span> <span class="cm-attribute">-it</span> \</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">--name</span> ubuntu2404-systemd \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">--privileged</span> \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">--cgroupns</span><span class="cm-operator">=</span>host \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">--tmpfs</span><span class="cm-operator">=</span>/run \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">--tmpfs</span><span class="cm-operator">=</span>/tmp \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-attribute">--volume</span><span class="cm-operator">=</span>/sys/fs/cgroup:/sys/fs/cgroup:rw \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  trfore/docker-ubuntu2404-systemd:latest</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 184px;"></div><div class="CodeMirror-gutters" style="display: none; height: 184px;"></div></div></div></pre><p><span>核心风险点在于 </span><code>--privileged + --cgroupns=host + --volume /sys/fs/cgroup</code><span>：</span></p><ol start='' ><li><p><strong><span>宿主机隔离被打破</span></strong></p><ul><li><p><code>--privileged</code><span> 让容器有所有 Linux capabilities（cap_sys_admin、cap_net_admin 等），等同 root。</span></p></li><li><p><span>可以直接操作宿主机设备文件、网络栈，甚至加载内核模块。</span></p></li></ul></li><li><p><strong><span>cgroup 控制泄露</span></strong></p><ul><li><p><code>--cgroupns=host</code><span> + 挂载 </span><code>/sys/fs/cgroup</code><span> → 容器能操作宿主机的 cgroups，修改 CPU/内存限制、杀死其他容器的进程。</span></p></li></ul></li><li><p><strong><span>宿主机提权/逃逸</span></strong></p><ul><li><p><span>特权容器几乎等于在宿主机上直接跑 root，隔离形同虚设。</span></p></li><li><p><span>如果攻击者拿到这个容器的 shell，就相当于拿到了宿主机 root。</span></p></li></ul></li></ol><h2 id='结论'><span>结论</span></h2><ol start='' ><li><p><span>不要在生产环境使用 </span><code>--privileged</code><span> 参数。</span></p></li><li><p><span>现有阶段 docker 运行 systemd 不可行。</span></p></li><li><p><span>作为备用方案，可使用 supervisord 来服务管理。</span></p></li></ol><p><span>参考版本库：</span></p><ol start='' ><li><p><a href='https://github.com/trfore/docker-ubuntu2404-systemd' target='_blank' class='url'>https://github.com/trfore/docker-ubuntu2404-systemd</a></p></li><li><p><a href='https://github.com/antmelekhin/docker-systemd' target='_blank' class='url'>https://github.com/antmelekhin/docker-systemd</a></p></li><li><p><span>建议只在开发环境使用。</span></p></li></ol><h3 id='dood说明'><span>DooD说明</span></h3><p><span>本指南提供一种“非官方”的 1Panel Docker 部署方案：</span></p><ol start='' ><li><p><span>所谓的 DooD，就是 Docker Out of Docker。简单来讲，就是在一个 docker 容器内部调用外部的 Docker。</span>
+<span>最简单的实现方式，共享 Host docker 的 sock 和 volumes。</span></p></li><li><p><span>使用 DooD（Docker‑out‑of‑Docker）复用宿主机 Docker 引擎，配合 supervisord 管理进程，避免在容器内运行 systemd 与 --privileged。</span></p></li><li><p><span>请在可信/单租户场景谨慎使用。需单独配置安全规则，如 WAF、防火墙。</span></p></li></ol><p>&nbsp;</p><p><span>容器内需复用宿主机 Docker 以安装/编排应用，需挂载：</span></p><ul><li><p><span>/var/run/docker.sock:/var/run/docker.sock</span></p></li><li><p><span>/var/lib/docker/volumes:/var/lib/docker/volumes</span></p></li><li><p><span>数据持久化目录（示例将 /1panel_app/data/ 映射到容器内 /opt/）</span></p></li></ul><p><span>参考docker-compose.yml：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="yml"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="yml"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 关键配置</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">volumes</span><span class="cm-meta">:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># make docker out of docker work</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta"> &nbsp; &nbsp;  - </span>/var/run/docker.sock:/var/run/docker.sock</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta"> &nbsp; &nbsp;  - </span>/var/lib/docker/volumes:/var/lib/docker/volumes</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta"> &nbsp; &nbsp;  - </span>/1panel_app/data/:/opt/</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><p>&nbsp;</p><h3 id='为什么选择dood'><span>为什么选择DooD</span></h3><h3 id='方案选型dood-vs-dind-vs-sysbox'><span>方案选型：DooD vs DinD vs Sysbox</span></h3><ul><li><p><span>DooD（本指南采用）</span></p><ul><li><p><span>优点：共享宿主机镜像缓存，构建快、占用少；实现简单</span></p></li><li><p><span>缺点：安全风险高（容器可控制宿主机 Docker），不适合多租户</span></p></li><li><p><span>适用：本机/可信环境、个人或单租户 CI</span></p></li></ul></li><li><p><span>DinD</span></p><ul><li><p><span>优点：容器内外引擎隔离</span></p></li><li><p><span>缺点：需要 --privileged，存在逃逸风险</span></p></li><li><p><span>适用：临时环境/非生产安全场景，谨慎使用</span></p></li></ul></li><li><p><span>Sysbox</span></p><ul><li><p><span>相对更安全的 DinD 替代，但对内核/发行版有要求，生态不如官方成熟</span></p></li></ul></li></ul><p><span>结论：</span></p><p><span>在当前条件下选用 DooD + supervisord，明确拒绝在生产环境用 --privileged 跑 systemd。</span></p><h3 id='dood-vs-dind-vs-sysbox对比'><span>DooD vs DinD vs Sysbox对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>特性维度</span></th><th><strong><span>DooD (Docker-out-of-Docker)</span></strong></th><th><strong><span>DinD (Docker-in-Docker)</span></strong></th><th><strong><span>Sysbox</span></strong></th></tr></thead><tbody><tr><td><strong><span>基本原理</span></strong></td><td><span>容器内挂载宿主机 Docker socket，直接复用宿主机 Docker 引擎</span></td><td><span>在容器中运行独立的 Docker 引擎（DinD 镜像）</span></td><td><span>使用 Sysbox 作为底层 runtime，容器内可安全运行 Docker / K8s 等系统级 workload</span></td></tr><tr><td><strong><span>优点</span></strong></td><td><span>- 共享宿主机镜像缓存，构建速度快- 节省磁盘空间</span></td><td><span>- 简单易用，官方有现成 DinD 镜像- 容器内外引擎隔离，避免直接操作宿主机容器</span></td><td><span>- 无需 privileged 容器- 使用 Linux user namespace 提供强隔离- 支持系统级 workload（Docker/K8s）- 与 Docker/K8s 无缝集成，使用方式类似 </span><code>runc</code></td></tr><tr><td><strong><span>缺点</span></strong></td><td><span>- 安全风险极大：容器可直接控制宿主机 Docker，甚至删除宿主机所有容器- 不适合多租户环境- bind mount 限制，某些功能（如 volume 挂载）可能失效</span></td><td><span>- 需要 privileged 权限运行，容器内 root = 宿主机 root- root 拥有全部 Linux capabilities，存在逃逸风险- 可直接访问宿主机设备和 /proc、/sys，能修改内核状态</span></td><td><span>- 需要较新的 Linux 内核- 目前只支持部分 Linux 发行版- 仍在社区发展中，生态不如 Docker 官方成熟</span></td></tr><tr><td><strong><span>安全风险</span></strong></td><td><span>高：容器内用户几乎等于宿主机 root 权限</span></td><td><span>高：privileged 容器 = 宿主机 root + 全 capability，容易被利用</span></td><td><span>相对低：用户隔离（userns）、procfs/sysfs 虚拟化、syscall 拦截，避免直接 root 映射</span></td></tr><tr><td><strong><span>适用场景</span></strong></td><td><span>- 本地开发临时测试- 单人或可信环境</span></td><td><span>- CI/CD 流水线需要独立 Docker 环境- 简单快速的沙箱环境</span></td><td><span>- CI/CD 多租户 runner- 安全沙箱环境- 在容器中运行系统级 workload（如 Docker/K8s）</span></td></tr><tr><td><strong><span>推荐程度</span></strong></td><td><span>✅ 推荐（需控制访问权限）</span></td><td><span>⚠️ 谨慎使用（非生产安全场景）</span></td><td><span>❌ 不推荐（配置复杂）</span></td></tr></tbody></table></figure><p><span>参考链接：</span></p><ol start='' ><li><p><a href='https://www.docker.com/resources/docker-in-docker-containerized-ci-workflows-dockercon-2023/'><span>Docker-in-Docker: Containerized CI Workflows</span></a></p></li></ol><h2 id='构建说明'><span>构建说明</span></h2><h3 id='本地构建makefile'><span>本地构建（Makefile）</span></h3><p><span>依赖：Docker Desktop（含 buildx），已登录 DockerHub（如需推送）。</span></p><p><span>列出命令：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">make</span> help</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>常用命令：</span></p><ul><li><p><span>初始化构建器（一次）：make builder</span></p></li><li><p><span>构建单个镜像（不推送）：make build OS=ubuntu VERSION=2.0.15 ONEPANEL_TYPE=cn</span></p></li><li><p><span>推送单个镜像：make push OS=centos VERSION=2.0.0 ONEPANEL_TYPE=cn</span></p></li><li><p><span>本机调试（加载到本地）：make load OS=ubuntu VERSION=2.0.15</span></p></li><li><p><span>多架构构建（不推送）：make buildx OS=centos VERSION=2.0.0</span></p></li><li><p><span>多架构构建并推送：make push OS=alpine VERSION=2.0.15</span></p></li><li><p><span>批量矩阵推送（3 OS × 2.0.0~2.0.15）：make matrix-push</span></p></li></ul><p><span>变量：</span></p><ul><li><p><span>OS=ubuntu|centos|alpine</span></p></li><li><p><span>VERSION=2.0.0~2.0.15（注入到 {%OnePanel_Version%}）</span></p></li><li><p><span>ONEPANEL_TYPE=pro|cn（注入到 {%OnePanel_Type%}）</span></p></li><li><p><span>PLATFORMS=linux/amd64,linux/arm64（可改为单架构）</span></p></li><li><p><span>IMAGE_REPO=caijiamx/1panel，IMAGE_TAG_PREFIX=dood</span></p></li></ul><p><span>构建示例</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 调试单个命令</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">make</span> <span class="cm-attribute">-n</span> build <span class="cm-def">OS</span><span class="cm-operator">=</span>ubuntu <span class="cm-def">VERSION</span><span class="cm-operator">=</span><span class="cm-number">2</span>.0.15 <span class="cm-def">ONEPANEL_TYPE</span><span class="cm-operator">=</span>cn</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 构建单个镜像</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">make</span> build <span class="cm-def">OS</span><span class="cm-operator">=</span>ubuntu <span class="cm-def">VERSION</span><span class="cm-operator">=</span><span class="cm-number">2</span>.0.15 <span class="cm-def">ONEPANEL_TYPE</span><span class="cm-operator">=</span>cn</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 115px;"></div><div class="CodeMirror-gutters" style="display: none; height: 115px;"></div></div></div></pre><p><span>命名规范：caijiamx/1panel:dood-{version}-{os}-cn</span></p><h3 id='github-actions-构建'><span>GitHub Actions 构建</span></h3><p><span>工作流：.github/workflows/main.yml（“Build and Push 1Panel Images”）</span></p><ul><li><p><span>触发方式：推送分支 main/dev 或手动 workflow_dispatch</span></p></li><li><p><span>构建矩阵：OS=[ubuntu, centos, alpine]；VERSION=[2.0.0..2.0.15]</span></p></li><li><p><span>多架构：linux/amd64, linux/arm64（使用 setup-qemu + buildx）</span></p></li><li><p><span>版本替换：构建前用 sed 将 Dockerfile 中 v{%OnePanel_Version%} 替换为具体版本</span></p></li><li><p><span>推送目标：caijiamx/1panel:dood-{version}-{os}</span></p></li><li><p><span>凭据：需要在仓库 Secrets 配置</span></p><ul><li><p><span>DOCKERHUB_USERNAME</span></p></li><li><p><span>DOCKERHUB_TOKEN</span></p></li></ul></li><li><p><span>使用方式：Actions 页面选择 main 工作流，点 Run workflow，选择 os 与 version</span></p></li></ul><h2 id='升级说明'><span>升级说明</span></h2><p><span>从 v2.0.0 -&gt; v2.0.11升级为例，准备工作：</span></p><ol start='' ><li><p><span>备份原始镜像，如 v2.0.0</span></p></li><li><p><span>备份挂载数据。</span></p></li><li><p><span>停止容器。</span></p></li></ol><h3 id='版本升级步骤'><span>版本升级步骤</span></h3><p><span>开始升级步骤：</span></p><ol start='' ><li><p><span>构建/拉取新版本镜像（例如 2.0.11）</span></p></li><li><p><span>手动修改版本号</span></p></li><li><p><span>启动新服务。</span></p></li></ol><h3 id='手动修改版本号'><span>手动修改版本号</span></h3><p><span>官方安装会自动维护版本号；本镜像方案需手动同步版本号（示例使用 sqlite3）：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sudo</span> apt-get update &amp;&amp; apt-get install <span class="cm-attribute">-y</span> sqlite3</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cp</span> /opt/1panel/db/core.db  /opt/1panel/db/core.db.bak</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cp</span> /opt/1panel/db/agent.db /opt/1panel/db/agent.db.bak</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sqlite3 /opt/1panel/db/core.db <span class="cm-string">"UPDATE settings SET value='v2.0.11' WHERE key='SystemVersion';"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sqlite3 /opt/1panel/db/agent.db <span class="cm-string">"UPDATE settings SET value='v2.0.11' WHERE key='SystemVersion';"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 161px;"></div><div class="CodeMirror-gutters" style="display: none; height: 161px;"></div></div></div></pre><p><span>更新镜像后重启容器（保留 /opt/ 数据卷）。</span></p><h2 id='常见问题'><span>常见问题</span></h2><h3 id='服务功能限制'><span>服务&amp;功能限制</span></h3><ol start='' ><li><p><span>面板-&gt;右下角更新-&gt;“立即升级”不可用。官方升级逻辑依赖 systemctl 停启服务。</span></p></li><li><p><del><span>面板-&gt;容器功能不可用。服务判定 docker 存活依赖 systemctl status，后续会优化不再依赖 systemctl。</span></del></p></li><li><p><span>nginx_status 默认仅监听 127.0.0.1，需自行调整。参考：</span><a href='#openresty-当前状态报错'><span>OpenResty 当前状态报错</span></a></p></li><li><p><span>部分应用安装时挂载路径出现异常，需按实际路径修正。</span></p></li><li><p><span>1panel-core&amp;1panel-agent 运行用户为 root。指定用户 nobody 运行的话，服务 1panel-agent 会挂掉。</span></p></li><li><p><span>工具箱-&gt;进程守护、FTP、Fail2ban 不可用。</span></p></li><li><p><span>v2.0.11 版本改进了 docker 服务判定逻辑，面板-&gt;容器功能基本可用（完整功能未全面测试）。</span></p></li><li><p><span>v2.0.11 新增磁盘管理，不建议使用该功能。</span></p></li><li><p><span>v2.0.12 - v2.0.15 待验证兼容性。</span></p></li></ol><p><span>面板不可用功能表格如下：</span></p><figure class='table-figure'><table><thead><tr><th><span>功能</span></th><th><span>是否可用</span></th><th><span>备注</span></th></tr></thead><tbody><tr><td><span>面板-&gt;立即升级（右下角）</span></td><td><span>❌</span></td><td>&nbsp;</td></tr><tr><td><span>网站-&gt;网站-&gt;OpenResy设置-&gt;当前状态</span><br/><span>网站-&gt;运行环境-&gt;php-fpm容器状态检查</span></td><td><span>❌</span></td><td>&nbsp;</td></tr><tr><td><span>工具箱-&gt;进程守护、FTP、Fail2ban、磁盘管理</span></td><td><span>❌</span></td><td><span>功能未测试</span></td></tr><tr><td><span>高级功能</span></td><td><span>❌</span></td><td><span>功能未测试</span></td></tr></tbody></table></figure><h3 id='faq'><span>FAQ</span></h3><h4 id='安装应用报错-are-you-trying-to-mount-a-directory-onto-a-file'><span>安装应用报错 “Are you trying to mount a directory onto a file”</span></h4><ul><li><p><span>原因：主机路径与容器内路径不匹配（文件/目录）</span></p></li><li><p><span>处理：按应用需求修正宿主机路径与映射关系</span></p></li></ul><p><span>举例：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="yml"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="yml"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 容器内docker-compose.yml配置</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">- </span>$<span class="cm-meta">{</span>WEBSITE_DIR<span class="cm-meta">}</span>:/www -&gt; /1panel_app/data/1panel/www:/www</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 容器内默认 1panel 项目目录:/opt/1panel</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre><p>&nbsp;</p><p><span>常用变量</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># 1panel 使用变量，用于文件 docker-compose.yml</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">${CONTAINER_NAME} # 自定义容器名</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">${IMAGE_NAME} # 自定义镜像名</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">${PANEL_APP_PORT_HTTP} # 自定义端口</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">${PANEL_WEBSITE_DIR} # 默认为 /opt/1panel/www</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">${WEBSITE_DIR} # 默认为 /opt/1panel/www</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 230px;"></div><div class="CodeMirror-gutters" style="display: none; height: 230px;"></div></div></div></pre><p>&nbsp;</p><h4 id='openresty-当前状态报错'><span>OpenResty 当前状态报错</span></h4><p><span>报错信息：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">服务内部错误: Get "http://127.0.0.1/nginx_status": dial tcp 127.0.0.1:80: connect: connection refused</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><p><span>原因：健康检查 127.0.0.1 访问失败，容器内访问 127.0.0.1 会访问 1panel 监听80端口，而 openresty 是单独的容器，1panel -&gt; openresty 可以走 </span><code>http://openresty</code><span>。</span></p><p><span>处理：可为健康检查添加 </span><code>host：server_name 127.0.0.1 openresty;</code><span> 正确访问地址：</span><a href='http://openresty/nginx_status' target='_blank' class='url'>http://openresty/nginx_status</a><span>。</span></p><p><span>彻底解决问题，需要修改官方实现代码：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="go" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="go"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">#</span> <span class="cm-variable">文件路径：agent</span><span class="cm-operator">/</span><span class="cm-variable">app</span><span class="cm-operator">/</span><span class="cm-variable">service</span><span class="cm-operator">/</span><span class="cm-variable">nginx</span><span class="cm-number">.</span><span class="cm-keyword">go</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">func</span> (<span class="cm-variable">n</span> <span class="cm-variable">NginxService</span>) <span class="cm-variable">GetStatus</span>() (<span class="cm-variable">response</span><span class="cm-number">.</span><span class="cm-variable">NginxStatus</span>, <span class="cm-keyword">error</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// bala</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">url</span> :<span class="cm-operator">=</span> <span class="cm-string">"http://127.0.0.1/nginx_status"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">if</span> <span class="cm-variable">httpPort</span> <span class="cm-operator">!=</span> <span class="cm-number">80</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">url</span> <span class="cm-operator">=</span> <span class="cm-variable">fmt</span><span class="cm-number">.</span><span class="cm-variable">Sprintf</span>(<span class="cm-string">"http://127.0.0.1:%v/nginx_status"</span>, <span class="cm-variable">httpPort</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">useDoodMode</span> :<span class="cm-operator">=</span> <span class="cm-atom">true</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">if</span> <span class="cm-variable">useDoodMode</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">localServerName</span> :<span class="cm-operator">=</span> <span class="cm-string">"127.0.0.1"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">openrestyContainerName</span> :<span class="cm-operator">=</span> <span class="cm-string">"openresty"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">url</span> <span class="cm-operator">=</span> <span class="cm-variable">strings</span><span class="cm-number">.</span><span class="cm-variable">ReplaceAll</span>(<span class="cm-variable">url</span>, <span class="cm-variable">localServerName</span>, <span class="cm-variable">openrestyContainerName</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// bala</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 345px;"></div><div class="CodeMirror-gutters" style="display: none; height: 345px;"></div></div></div></pre><p>&nbsp;</p><h4 id='反向代理配置'><span>反向代理配置</span></h4><p><span>WebSocket/升级头</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="nginx"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="nginx"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag">proxy_http_version 1</span>.1;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">proxy_set_header</span> <span class="cm-tag">Upgrade </span>$http_upgrade;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">proxy_set_header</span> <span class="cm-tag">Connection </span><span class="cm-string">"upgrade"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">proxy_set_header</span> <span class="cm-tag">Host </span>$host; &nbsp;<span class="cm-comment"># 若需要固定后端 Host，请显式设置</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 92px;"></div><div class="CodeMirror-gutters" style="display: none; height: 92px;"></div></div></div></pre><p>&nbsp;</p><h4 id='安全入口与账户信息'><span>安全入口与账户信息</span></h4><ul><li><p><span>开启安全入口后，通过容器内命令查看：1pctl user-info</span></p></li><li><p><span>首次部署务必修改用户名/密码/入口</span></p></li><li><p><span>建议WAF+网络防火墙做好访问控制。</span></p><p>&nbsp;</p></li></ul><h4 id='cloudflare-常见端口'><span>Cloudflare 常见端口</span></h4><ul><li><p><span>HTTP：80, 8080, 8880, 2052, 2082, 2086, 2095</span></p></li><li><p><span>HTTPS：443, 2053, 2083, 2087, 2096, 8443</span></p></li></ul><p>&nbsp;</p><h4 id='资源与超时'><span>资源与超时</span></h4><p><span>CPU 限额过低可能导致接口超时（偶尔 5xx/超时），建议 1.0~1.5 core。</span></p><p>&nbsp;</p><h2 id='安全提示'><span>安全提示</span></h2><ul><li><p><span>DooD 允许容器控制宿主机 Docker，有一定安全风险。仅在可信、单租户环境使用。</span></p></li><li><p><span>建议配置网络防火墙允许访问的IP以及端口。</span></p></li><li><p><span>建议对面板做访问控制：域名限制、IP端口、机器隔离。</span></p></li></ul><h2 id='参考项目'><span>参考项目</span></h2><ol start='' ><li><p><a href='https://github.com/okxlin/docker-1panel'><span>okxlin/docker-1panel</span></a><span>、</span><a href='https://github.com/tangger2000/1panel-dood'><span>tangger2000/1panel-dood</span></a><span>（项目已归档）</span></p></li><li><p><a href='https://github.com/purainity/docker-1panel-v2'><span>purainity/docker-1panel-v2</span></a><span>：</span><a href='https://github.com/dph5199278/docker-1panel'><span>dph5199278/docker-1panel</span></a><span>、</span><a href='https://github.com/Xeath/1panel-in-docker'><span>Xeath/1panel-in-docker</span></a></p></li><li><p>&nbsp;</p></li></ol><h2 id='维护者'><span>维护者</span></h2><ul><li><p><span>GeekWho </span><a href='mailto:geekwho_eth@outlook.com' target='_blank' class='url'>geekwho_eth@outlook.com</a></p></li></ul><p>&nbsp;</p><p><a href='index.html'><span>返回首页</span></a></p></div></div>
 </body>
 </html>
