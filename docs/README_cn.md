@@ -430,7 +430,7 @@ make build OS=ubuntu VERSION=2.0.15 ONEPANEL_TYPE=cn
 
 开始升级步骤：
 
-1. 构建/拉取新版本镜像（例如 2.0.11）
+1. 构建/拉取新版本镜像（例如 2.2.3）
 2. 手动修改版本号
 3. 启动新服务。
 
@@ -441,8 +441,8 @@ make build OS=ubuntu VERSION=2.0.15 ONEPANEL_TYPE=cn
 sudo apt-get update && apt-get install -y sqlite3
 cp /opt/1panel/db/core.db  /opt/1panel/db/core.db.bak
 cp /opt/1panel/db/agent.db /opt/1panel/db/agent.db.bak
-sqlite3 /opt/1panel/db/core.db "UPDATE settings SET value='v2.0.11' WHERE key='SystemVersion';"
-sqlite3 /opt/1panel/db/agent.db "UPDATE settings SET value='v2.0.11' WHERE key='SystemVersion';"
+sqlite3 /opt/1panel/db/core.db "UPDATE settings SET value='v2.2.3' WHERE key='SystemVersion';"
+sqlite3 /opt/1panel/db/agent.db "UPDATE settings SET value='v2.2.3' WHERE key='SystemVersion';"
 ```
 更新镜像后重启容器（保留 /opt/ 数据卷）。
 
@@ -458,7 +458,9 @@ sqlite3 /opt/1panel/db/agent.db "UPDATE settings SET value='v2.0.11' WHERE key='
 6. 工具箱->进程守护、FTP、Fail2ban 不可用。
 7. v2.0.11 版本改进了 docker 服务判定逻辑，面板->容器功能基本可用（完整功能未全面测试）。
 8. v2.0.11 新增磁盘管理，不建议使用该功能。
-9. v2.0.12 - v2.0.15 待验证兼容性。
+9. v2.0.12 - v2.0.15 已支持（全功能的兼容性，请自行验证）。
+10. v2.0.15 - v2.1.7 已支持（全功能的兼容性，请自行验证）。
+11. v2.2.3 已支持（全功能的兼容性，请自行验证），当前最新支持版本。
 
 面板不可用功能表格如下：
 
