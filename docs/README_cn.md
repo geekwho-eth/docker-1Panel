@@ -18,8 +18,8 @@
 
 本仓库用于构建并发布 1Panel 的 Docker 镜像，采用 DooD（Docker-out-of-Docker）设计，复用宿主机 Docker 引擎，使用 supervisord 管理 1Panel 进程，避免在容器内运行 systemd 或使用 --privileged。
 
-- 当前镜像最新版本：2.2.5
-- 支持多版本：2.0.0 ~ 2.2.5（通过变量替换注入）
+- 当前镜像最新版本：2.3.2
+- 支持多版本：2.0.0 ~ 2.3.2（通过变量替换注入）
 - 支持多系统：ubuntu、centos、alpine
 - 支持多架构：amd64、arm64（buildx + QEMU）
 - 镜像命名：caijiamx/1panel:dood-{version}-{os}-cn
@@ -430,7 +430,7 @@ make build OS=ubuntu VERSION=2.0.15 ONEPANEL_TYPE=cn
 
 开始升级步骤：
 
-1. 构建/拉取新版本镜像（例如 2.2.5）
+1. 构建/拉取新版本镜像（例如 2.3.2）
 2. 手动修改版本号
 3. 启动新服务。
 
@@ -441,8 +441,8 @@ make build OS=ubuntu VERSION=2.0.15 ONEPANEL_TYPE=cn
 sudo apt-get update && apt-get install -y sqlite3
 cp /opt/1panel/db/core.db  /opt/1panel/db/core.db.bak
 cp /opt/1panel/db/agent.db /opt/1panel/db/agent.db.bak
-sqlite3 /opt/1panel/db/core.db "UPDATE settings SET value='v2.2.5' WHERE key='SystemVersion';"
-sqlite3 /opt/1panel/db/agent.db "UPDATE settings SET value='v2.2.5' WHERE key='SystemVersion';"
+sqlite3 /opt/1panel/db/core.db "UPDATE settings SET value='v2.3.2' WHERE key='SystemVersion';"
+sqlite3 /opt/1panel/db/agent.db "UPDATE settings SET value='v2.3.2' WHERE key='SystemVersion';"
 ```
 更新镜像后重启容器（保留 /opt/ 数据卷）。
 
@@ -460,7 +460,7 @@ sqlite3 /opt/1panel/db/agent.db "UPDATE settings SET value='v2.2.5' WHERE key='S
 8. v2.0.11 新增磁盘管理，不建议使用该功能。
 9. v2.0.12 - v2.0.15 已支持（全功能的兼容性，请自行验证）。
 10. v2.0.15 - v2.1.7 已支持（全功能的兼容性，请自行验证）。
-11. v2.2.5 已支持（全功能的兼容性，请自行验证），当前最新支持版本。
+11. 当前默认构建版本为 v2.3.2（全功能兼容性需另行验证）。
 
 面板不可用功能表格如下：
 
